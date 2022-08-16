@@ -4,7 +4,6 @@
 
 A Laravel project template to save you time and energy.
 
-[![Build Status](https://github.com/komandar/laravel-template/workflows/build/badge.svg)](https://github.com/komandar/laravel-template/actions)
 [![Licence](https://img.shields.io/github/license/komandar/laravel-template)](LICENSE)
 
 <img src="https://raw.githubusercontent.com/komandar/assets/main/src/laravel-template/showcase.png" alt="Showcase">
