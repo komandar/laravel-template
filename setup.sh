@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# The following script will setup the project for the first time
-# To run the project in the future, simply run `docker compose up -d`
+# This script prepares the initial installation.
+# To start the project in the future, simply run `docker compose up -d`
 
 main() {
+    # Join right folder
     cd src || exit 1
 
-    # Install dependencies
+    # Install required dependencies
     composer install
     npm install
 
