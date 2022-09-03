@@ -9,22 +9,6 @@ services:
       - app
     env_file:
       - src/.env
-    depends_on:
-      - app-db
-
-  postgres:
-    image: postgres:alpine
-    container_name: postgres
-    restart: always
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    networks:
-      - app
-    env_file:
-      - .env
-
-volumes:
-  postgres-data:
 
 networks:
   app:
