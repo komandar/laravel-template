@@ -2,13 +2,21 @@ version: "3"
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        NGINX_SERVERNAME: myexample.com
+        PHP_VERSION: 8.1
     container_name: app
-    restart: always
+    restart: unless-stopped
     networks:
       - app
+    ports:
+      - "8101:80"
     env_file:
       - src/.env
+    environment:
+      VIRTUAL_HOST: "www.example.com"
 
 networks:
   app:

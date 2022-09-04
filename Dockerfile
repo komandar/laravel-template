@@ -1,9 +1,22 @@
-FROM komandar/nginx-php:8.1-v1
+ARG NGINX_SERVERNAME=example.com
+ARG PHP_VERSION=8.1
 
-COPY --chown=www-data:www-data ./src /var/www/html
+#FROM komandar/nginx-php:${PHP_VERSION}
+FROM locally/local:v5
 
-RUN composer install -q --no-ansi --no-interaction --no-scripts --no-plugins --no-progress --prefer-dist \
-    # Setup Laravel
+# Overwrite variables with build-args
+RUN sed -i "s/appurl/${NGINX_SERVERNAME}/g" /etc/nginx/http.d/default.conf
+
+# Copy project folder inside docker
+COPY --chown=www-data:www-data ./src /var/www/app
+
+WORKDIR /var/www/app
+
+# Setup Laravel
+RUN composer install -q --optimize-autoloader --no-dev --no-interaction \
     && chmod -R 755 storage bootstrap/cache \
     && php artisan storage:link \
-    && php artisan optimize:clear
+    && php artisan optimize \
+    && php artisan view:cache
+
+USER www-data:www-data
