@@ -24,10 +24,10 @@ Click the `Use this template` button at the top of this project's GitHub page, i
 
 Once Laravel is installed, replace text as needed throughout the project:
 
-1. Replace all instances of `app` with the name of your project
+1. Replace all instances of `appname` with the name of your project
 2. Update name in `LICENSE`
-3. Update the `CHANGELOG`
-4. Delete this `README` and use the `README.md.dist` one for your project
+3. Update the `CHANGELOG.md`
+4. Delete this `README.md` and use the `README.md.dist` one for your project
 
 ## Install
 
@@ -43,36 +43,5 @@ Once Laravel is installed, replace text as needed throughout the project:
 docker compose up -d
 
 # Deploy the project in production
-docker compose -f docker-compose.yml -f docker-compose-prod.yml up -d
-```
-
-## Development
-
-The following commands may need to be manually added before they're ready to use.
-
-```bash
-# Install dependencies
-composer install
-
-# Migrate the database
-composer migrate
-composer migrate-fresh
-
-# Clean the database
-composer db-clean
-
-# Seed the database
-composer seed
-
-# Lint the PHP files
-composer lint
-
-# Compile SASS and Javascript during development
-npm run dev
-
-# Compile for production
-npm run prod
-
-# Watch for CSS and Javascript changes
-npm run watch
+docker compose -f docker-compose-prod.yml up -d
 ```
